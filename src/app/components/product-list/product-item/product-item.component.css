@@ -1,0 +1,11 @@
+.product-card {
+    margin: 20px;
+    width: 18%;
+    float: left;
+}
+.product-card-container {
+    padding: 20%;
+}
+.product-img {
+    size: 50px;
+}
