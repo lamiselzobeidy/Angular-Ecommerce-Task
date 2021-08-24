@@ -1,0 +1,13 @@
+.container{
+    text-align: center;
+    border: 3px solid rgba(181, 181, 230, 0.664);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+}
+.btn {
+    width: 100%;
+}
+.form-field {
+    margin: 10px;
+}

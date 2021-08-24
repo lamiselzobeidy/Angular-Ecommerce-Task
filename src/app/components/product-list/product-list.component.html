@@ -1,7 +1,10 @@
 <app-add-product (onAddProduct)="addProduct($event)"></app-add-product>
 <app-product-item 
-*ngFor="let product of products" 
+*ngFor="let product of products | paginate: { itemsPerPage: 10, currentPage: p }" 
 [product]="product" 
 (onDeleteProduct)="deleteProduct(product)"
 >
-</app-product-item>
+</app-product-item><br><br>
+<div class="pagination">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>

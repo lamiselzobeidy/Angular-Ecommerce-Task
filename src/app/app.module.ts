@@ -17,6 +17,9 @@ import { ProductItemComponent } from './components/product-list/product-item/pro
 import { MatCardModule } from '@angular/material/card';
 import { AddProductComponent } from './components/product-list/add-product/add-product.component';
 import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {NgxPaginationModule} from 'ngx-pagination'; 
+
 
 
 @NgModule({
@@ -28,8 +31,10 @@ import { MatInputModule } from '@angular/material/input';
     AddProductComponent
   ],
   imports: [
+    NgxPaginationModule,
     BrowserModule,
     FormsModule,
+    MatPaginatorModule,
     MatSliderModule,
     MatFormFieldModule,
     MatInputModule,

@@ -1,18 +1,21 @@
-<form class="add-product-form" (ngSubmit)="onSubmit()">
-    <mat-form-field appearance="outline">
+<div class="container">
+  <h2>Add a new product</h2>
+  <form class="add-product-form" (ngSubmit)="onSubmit()">
+    <mat-form-field class="form-field" appearance="outline">
       <mat-label>Name</mat-label>
       <input matInput type="text" placeholder="Placeholder" name="name" [(ngModel)]="name">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
     </mat-form-field>
-    <mat-form-field appearance="outline">
+    <mat-form-field class="form-field" appearance="outline">
         <mat-label>Description</mat-label>
         <input matInput placeholder="Placeholder" type="text" name="description" [(ngModel)]="description">
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
       </mat-form-field>
-      <mat-form-field appearance="outline">
+      <mat-form-field class="form-field" appearance="outline">
         <mat-label>Price</mat-label>
         <input matInput placeholder="Placeholder" type="text" name="price" [(ngModel)]="price">
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
       </mat-form-field>
-      <button type="submit">Add Product</button>
+      <div class="btn">
+        <button mat-raised-button color="primary" type="submit">Add Product</button>
+      </div>
+      
 </form>
+</div>
