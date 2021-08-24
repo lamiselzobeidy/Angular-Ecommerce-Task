@@ -3,6 +3,12 @@ import {Observable, of} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Product } from '../Product';
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -19,5 +25,9 @@ export class ProductsService {
   deleteProduct(product: Product): Observable<Product> {
     const url = `${this.apiUrl}/${product.id}`;
     return this.http.delete<Product>(url);
+  }
+
+  addProduct(product: Product): Observable<Product> {
+    return this.http.post<Product>(this.apiUrl, product, httpOptions)
   }
 }

@@ -1,8 +1,7 @@
-<div class="product-card-container" [ngClass]="{ is_available: product.is_available }" class="product">
+<div class="product-card-container" class="product">
     <mat-card class="product-card">
         <mat-card-title>{{product.name}}</mat-card-title>
         <img class="product-img" mat-card-image src={{product.image}} />
-        <mat-card-subtitle>{{product.category}}</mat-card-subtitle>
         <mat-card-content>{{product.description}}</mat-card-content>
         <mat-card-footer>{{product.price}}</mat-card-footer>
         <mat-card-actions>

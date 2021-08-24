@@ -24,4 +24,8 @@ export class ProductListComponent implements OnInit {
       );
   }
 
+  addProduct(product: Product) {
+    this.productService.addProduct(product).subscribe((product) => this.products.push(product));
+  }
+
 }
