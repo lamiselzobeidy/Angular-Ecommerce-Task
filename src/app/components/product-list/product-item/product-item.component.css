@@ -6,3 +6,6 @@
 .product-card-container {
     padding: 20%;
 }
+.chip {
+    float: left;
+}

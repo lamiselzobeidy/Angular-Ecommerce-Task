@@ -2,7 +2,10 @@
     <mat-card class="product-card">
         <mat-card-title>{{product.name}}</mat-card-title>
         <mat-card-content>{{product.description}}</mat-card-content>
-        <mat-card-footer>{{product.price}}</mat-card-footer>
+        <mat-card-footer>{{product.price}}EGP</mat-card-footer>
+        <mat-chip-list aria-label="Fish selection" *ngFor="let tag of product.tags">
+            <mat-chip class="chip">{{tag}}</mat-chip>
+          </mat-chip-list>
         <mat-card-actions>
             <button mat-icon-button color="warn" class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
             <mat-icon (click)="onDelete(product)">delete</mat-icon>

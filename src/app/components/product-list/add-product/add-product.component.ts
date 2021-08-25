@@ -1,5 +1,13 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Product } from '../../../Product';
+import { FormGroup, FormControl, Validators  } from '@angular/forms';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {MatChipInputEvent} from '@angular/material/chips';
+
+export interface Tags {
+  name: string;
+}
+
 
 @Component({
   selector: 'app-add-product',
@@ -8,33 +16,59 @@ import { Product } from '../../../Product';
 })
 export class AddProductComponent implements OnInit {
   @Output() onAddProduct: EventEmitter<Product> = new EventEmitter()
-  name: string;
-  description: string;
-  price: string;
 
-  constructor() { }
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
+  tags: Tags[] = [];
 
-  ngOnInit(): void {
-  }
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
 
-  onSubmit() 
-  {
-    if(!this.name){
-      alert("please add a name");
-      return;
-    }
-    const newProduct = {
-      name: this.name,
-      description: this.description,
-      price: this.price,
-      image: "link",
+    if (value) {
+      this.tags.push({name: value});
     }
 
-    this.onAddProduct.emit(newProduct);
-
-    this.name = "";
-    this.description = "";
-    this.price = "";
+    event.chipInput!.clear();
   }
 
+  remove(tag: Tags): void {
+    const index = this.tags.indexOf(tag);
+
+    if (index >= 0) {
+      this.tags.splice(index, 1);
+    }
+  }
+
+  addNewProductForm = new FormGroup ({
+  name : new FormControl('',Validators.required),
+  description : new FormControl('',Validators.required),
+  price : new FormControl(null,Validators.required),
+  tags: new FormControl([],Validators.required),
+})
+
+constructor() { }
+
+ngOnInit(): void {
+}
+
+onSubmit()
+{
+  if (!this.addNewProductForm.get('name')?.value) {
+    return;
+  }
+  const tagsArray = [this.addNewProductForm.get('tags')?.value];
+  console.log(this.addNewProductForm.get('tags')?.value)
+  const newProduct = {
+    name: this.addNewProductForm.get('name')?.value,
+    description: this.addNewProductForm.get('description')?.value,
+    price: this.addNewProductForm.get('price')?.value,
+    tags: tagsArray
+  }
+
+  this.onAddProduct.emit(newProduct);
+  this.addNewProductForm.reset();
+  
+}
 }
